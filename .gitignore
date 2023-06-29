@@ -1,0 +1,6 @@
+libvector.a
+compile_commands.json
+objs/
+.cache/
+.gdb_history
+*.swp
