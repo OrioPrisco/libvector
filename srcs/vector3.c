@@ -6,35 +6,37 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:37:12 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/06/30 15:54:05 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/06/30 17:54:44 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "libft.h"
 
-bool	vector_append_n(t_vector *vector, t_vector_data data, size_t n)
+bool	vector_append_n(t_vector *vector, void *data, size_t n)
 {
 	if (vector_ensure_capacity(vector, n))
 		return (1);
 	while (n--)
-		vector->data[vector->size++] = data;
+		ft_memcpy(vector->data + (vector->size++) * vector->elem_size,
+			data, n * vector->elem_size);
 	return (0);
 }
 
-bool	vector_append_elems(t_vector *vector, t_vector_data *data, size_t n)
+bool	vector_append_elems(t_vector *vector, void *data, size_t n)
 {
 	if (vector_ensure_capacity(vector, n))
 		return (1);
-	while (n--)
-		vector->data[vector->size++] = *data++;
+	ft_memcpy(vector->data + vector->size * vector->elem_size,
+		data, n * vector->elem_size);
+	vector->size += n;
 	return (0);
 }
 
 t_vector	*vector_pop_n(t_vector *vector, size_t index, size_t n)
 {
 	ft_memmove(vector->data + index, vector->data + index + n,
-		(vector->size - index - n) * sizeof(*vector->data));
+		(vector->size - index - n) * vector->elem_size);
 	vector->size -= n;
 	return (vector);
 }
@@ -46,7 +48,7 @@ t_vector	*vector_move(t_vector *dest, t_vector *src)
 	ft_bzero(src, sizeof(*src));
 	return (src);
 }
-
+/*
 size_t	vector_count_elems(t_vector *vector, t_vector_data data, size_t index)
 {
 	size_t	total;
@@ -59,3 +61,4 @@ size_t	vector_count_elems(t_vector *vector, t_vector_data data, size_t index)
 	}
 	return (total);
 }
+*/

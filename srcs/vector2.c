@@ -13,29 +13,29 @@
 #include "vector.h"
 #include "libft.h"
 
-t_vector_data	vector_pop(t_vector *vector, size_t index)
+void	vector_pop(t_vector *vector, size_t index, void *dest)
 {
-	t_vector_data	data;
-
-	data = vector->data[index];
+	ft_memcpy(dest, vector->data + index * vector->elem_size,
+		vector->elem_size);
 	ft_memmove(vector->data + index, vector->data + index + 1,
-		(vector->size - index - 1) * sizeof(*vector->data));
+		(vector->size - index - 1) * vector->elem_size);
 	vector->size--;
-	return (data);
 }
 
 //TODO : probably can avoid recopying the end of the data twice
-bool	vector_insert(t_vector *vector, size_t index, t_vector_data data)
+bool	vector_insert(t_vector *vector, size_t index, void *data)
 {
 	if (vector_ensure_capacity(vector, 1))
 		return (1);
 	ft_memmove(vector->data + index + 1, vector->data + index,
-		(vector->size - index) * sizeof(*vector->data));
-	vector->data[index] = data;
+		(vector->size - index) * vector->elem_size);
+	ft_memcpy(vector->data + index * vector->elem_size,
+		data, vector->elem_size);
 	vector->size++;
 	return (0);
 }
 
+/*
 t_vector	*vector_sort(t_vector *vector)
 {
 	size_t			i;
@@ -60,20 +60,22 @@ t_vector	*vector_sort(t_vector *vector)
 	}
 	return (vector);
 }
+*/
 
 bool	vector_copy(t_vector *dest, const t_vector *src)
 {
-	return (vector_copy_n(dest, src->data, src->size));
+	return (vector_copy_n(dest, src->data, src->size, src->elem_size));
 }
 
-bool	vector_copy_n(t_vector *dest, const t_vector_data *src, size_t n)
+bool	vector_copy_n(t_vector *dest, const void *src, size_t n,
+			size_t elem_size)
 {
 	if (!n)
-		return (vector_init(dest), 0);
-	dest->data = malloc(n * sizeof(*src));
+		return (vector_init(dest, elem_size), 0);
+	dest->data = malloc(n * elem_size);
 	if (!dest->data)
 		return (1);
-	ft_memcpy(dest->data, src, n * sizeof(*src));
+	ft_memcpy(dest->data, src, n * elem_size);
 	dest->size = n;
 	dest->capacity = n;
 	return (0);

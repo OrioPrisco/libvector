@@ -6,11 +6,12 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:00:08 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/06/30 15:54:10 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/06/30 17:55:57 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "vector.h"
 
+/*
 bool	vector_is_sorted(t_vector *vector, bool ascending)
 {
 	size_t	i;
@@ -24,3 +25,4 @@ bool	vector_is_sorted(t_vector *vector, bool ascending)
 	}
 	return (1);
 }
+*/

@@ -6,16 +6,17 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:19 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/06/30 15:54:34 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/06/30 16:43:00 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "libft.h"
 
-t_vector	*vector_init(t_vector *vector)
+t_vector	*vector_init(t_vector *vector, size_t elem_size)
 {
 	ft_bzero(vector, sizeof(*vector));
+	vector->elem_size = elem_size;
 	return (vector);
 }
 
@@ -24,18 +25,19 @@ bool	vector_allocate(t_vector *vector, size_t size)
 	if (size == 0)
 		size = 1;
 	vector->size = 0;
-	vector->data = malloc(size * sizeof(*vector->data));
+	vector->data = malloc(size * vector->elem_size);
 	if (!vector->data)
 		return (1);
 	vector->capacity = size;
 	return (0);
 }
 
-bool	vector_append(t_vector *vector, t_vector_data data)
+bool	vector_append(t_vector *vector, void *data)
 {
 	if (vector_ensure_capacity(vector, 1))
 		return (1);
-	vector->data[vector->size] = data;
+	ft_memcpy(vector->data + vector->size * vector->elem_size,
+		data, vector->elem_size);
 	vector->size++;
 	return (0);
 }
@@ -45,15 +47,13 @@ t_vector	*vector_clear(t_vector *vector)
 	if (!vector)
 		return (NULL);
 	free(vector->data);
-	vector->data = 0;
-	vector->size = 0;
-	vector->capacity = 0;
+	ft_bzero(vector, sizeof(*vector));
 	return (vector);
 }
 
 bool	vector_ensure_capacity(t_vector *vector, size_t size)
 {
-	t_vector_data	*new_data;
+	void			*new_data;
 	size_t			new_capacity;
 
 	if (vector->capacity == 0 && size < DEFAULT_VECTOR_SIZE)
@@ -65,10 +65,10 @@ bool	vector_ensure_capacity(t_vector *vector, size_t size)
 	new_capacity = vector->capacity * 2;
 	while (vector->size + size > new_capacity)
 		new_capacity *= 2;
-	new_data = malloc(new_capacity * sizeof(*vector->data));
+	new_data = malloc(new_capacity * vector->elem_size);
 	if (!new_data)
 		return (1);
-	ft_memcpy(new_data, vector->data, vector->size * sizeof(*vector->data));
+	ft_memcpy(new_data, vector->data, vector->size * vector->elem_size);
 	free(vector->data);
 	vector->data = new_data;
 	vector->capacity = new_capacity;
