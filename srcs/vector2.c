@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:25:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/06/30 15:54:02 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/06/30 17:33:53 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vector_data	vector_pop(t_vector *vector, size_t index)
 bool	vector_insert(t_vector *vector, size_t index, t_vector_data data)
 {
 	if (vector_ensure_capacity(vector, 1))
-		return (0);
+		return (1);
 	ft_memmove(vector->data + index + 1, vector->data + index,
 		(vector->size - index) * sizeof(*vector->data));
 	vector->data[index] = data;
