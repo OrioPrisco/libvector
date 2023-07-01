@@ -19,7 +19,7 @@ bool	vector_append_n(t_vector *vector, const void *data, size_t n)
 		return (1);
 	while (n--)
 		ft_memcpy(vector->data + (vector->size++) * vector->elem_size,
-			data, n * vector->elem_size);
+			data, vector->elem_size);
 	return (0);
 }
 
@@ -35,7 +35,8 @@ bool	vector_append_elems(t_vector *vector, const void *data, size_t n)
 
 t_vector	*vector_pop_n(t_vector *vector, size_t index, size_t n)
 {
-	ft_memmove(vector->data + index, vector->data + index + n,
+	ft_memmove(vector->data + index * vector->elem_size,
+		vector->data + index + n,
 		(vector->size - index - n) * vector->elem_size);
 	vector->size -= n;
 	return (vector);
