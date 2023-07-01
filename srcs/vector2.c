@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:25:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/06/30 17:33:53 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/07/01 22:28:27 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	vector_pop(t_vector *vector, size_t index, void *dest)
 }
 
 //TODO : probably can avoid recopying the end of the data twice
-bool	vector_insert(t_vector *vector, size_t index, void *data)
+bool	vector_insert(t_vector *vector, size_t index, const void *data)
 {
 	if (vector_ensure_capacity(vector, 1))
 		return (1);

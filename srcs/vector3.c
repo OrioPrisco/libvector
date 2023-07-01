@@ -6,14 +6,14 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:37:12 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/06/30 17:54:44 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/07/01 22:28:40 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "libft.h"
 
-bool	vector_append_n(t_vector *vector, void *data, size_t n)
+bool	vector_append_n(t_vector *vector, const void *data, size_t n)
 {
 	if (vector_ensure_capacity(vector, n))
 		return (1);
@@ -23,7 +23,7 @@ bool	vector_append_n(t_vector *vector, void *data, size_t n)
 	return (0);
 }
 
-bool	vector_append_elems(t_vector *vector, void *data, size_t n)
+bool	vector_append_elems(t_vector *vector, const void *data, size_t n)
 {
 	if (vector_ensure_capacity(vector, n))
 		return (1);

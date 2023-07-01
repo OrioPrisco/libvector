@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:19 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/06/30 16:43:00 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/07/01 22:28:16 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	vector_allocate(t_vector *vector, size_t size)
 	return (0);
 }
 
-bool	vector_append(t_vector *vector, void *data)
+bool	vector_append(t_vector *vector, const void *data)
 {
 	if (vector_ensure_capacity(vector, 1))
 		return (1);
