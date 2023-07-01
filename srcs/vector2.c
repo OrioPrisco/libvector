@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:25:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/01 22:28:27 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/02 00:31:14 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ bool	vector_copy_n(t_vector *dest, const void *src, size_t n,
 	ft_memcpy(dest->data, src, n * elem_size);
 	dest->size = n;
 	dest->capacity = n;
+	dest->elem_size = elem_size;
 	return (0);
 }
