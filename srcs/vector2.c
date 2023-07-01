@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:25:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/02 00:31:14 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/02 00:37:41 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ bool	vector_insert(t_vector *vector, size_t index, const void *data)
 {
 	if (vector_ensure_capacity(vector, 1))
 		return (1);
-	ft_memmove(vector->data + index + 1, vector->data + index,
+	ft_memmove(vector->data + (index + 1) * vector->elem_size,
+		vector->data + index * vector->elem_size,
 		(vector->size - index) * vector->elem_size);
 	ft_memcpy(vector->data + index * vector->elem_size,
 		data, vector->elem_size);
