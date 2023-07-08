@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:25:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/02 00:37:41 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/08 21:06:23 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	vector_pop(t_vector *vector, size_t index, void *dest)
 {
 	ft_memcpy(dest, vector->data + index * vector->elem_size,
 		vector->elem_size);
-	ft_memmove(vector->data + index, vector->data + index + 1,
+	ft_memmove(vector->data + index * vector->elem_size,
+		vector->data + (index + 1) * vector->elem_size,
 		(vector->size - index - 1) * vector->elem_size);
 	vector->size--;
 }
