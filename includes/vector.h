@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:50 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/11 14:52:46 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/11 15:42:55 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,7 @@ t_vector		*vector_move(t_vector *dest, t_vector *src);
 //meant to be used before passing a vector of char to a string function,
 // or a vector of pointers to a tab function
 bool			vector_null_term(t_vector *vector);
+//moves the data array out of the vector
+// allows using the vector as a string builder
+void			*vector_move_data(t_vector *vector);
 #endif

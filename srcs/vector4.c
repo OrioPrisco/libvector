@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:00:08 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/11 14:49:26 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/11 15:36:51 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "vector.h"
@@ -35,4 +35,15 @@ bool	vector_null_term(t_vector *vector)
 	ft_bzero(vector->data + vector->size * vector->elem_size,
 		vector->elem_size);
 	return (0);
+}
+
+void	*vector_move_data(t_vector *vector)
+{
+	void	*data;
+
+	data = vector->data;
+	vector->data = NULL;
+	vector->size = 0;
+	vector->capacity = 0;
+	return (data);
 }
