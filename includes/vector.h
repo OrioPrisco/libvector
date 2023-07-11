@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:50 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/01 22:27:52 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/11 14:52:46 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,10 @@ t_vector		*vector_move(t_vector *dest, t_vector *src);
 //size_t			vector_count_elems(t_vector *vector, void *data,
 //					size_t index);
 //bool			vector_is_sorted(t_vector *vector, bool ascending);
+
+//appends a new element at the end of the vector that is memset to 0
+// but does not increase the size.
+//meant to be used before passing a vector of char to a string function,
+// or a vector of pointers to a tab function
+bool			vector_null_term(t_vector *vector);
 #endif
