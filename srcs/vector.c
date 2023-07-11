@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:19 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/01 22:28:16 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/11 18:28:18 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_vector	*vector_init(t_vector *vector, size_t elem_size)
 bool	vector_allocate(t_vector *vector, size_t size)
 {
 	if (size == 0)
-		size = 1;
+		return (0);
 	vector->size = 0;
 	vector->data = malloc(size * vector->elem_size);
 	if (!vector->data)
