@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:19 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/11 18:28:18 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/14 17:38:51 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	vector_ensure_capacity(t_vector *vector, size_t size)
 		return (vector_allocate(vector, DEFAULT_VECTOR_SIZE));
 	if (vector->capacity == 0)
 		return (vector_allocate(vector, size));
-	if (vector->size + size < vector->capacity)
+	if (vector->size + size <= vector->capacity)
 		return (0);
 	new_capacity = vector->capacity * 2;
 	while (vector->size + size > new_capacity)
