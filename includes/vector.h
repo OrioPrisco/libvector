@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:50 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/11 15:42:55 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/18 15:23:37 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,7 @@ bool			vector_null_term(t_vector *vector);
 //moves the data array out of the vector
 // allows using the vector as a string builder
 void			*vector_move_data(t_vector *vector);
+//clears a vector and calls a free like function on every element
+//Does not free the t_vector *
+t_vector		*vector_free(t_vector *vector, void (*f)(void *));
 #endif

@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:00:08 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/11 15:36:51 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/18 15:27:25 by OrioPrisco       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "vector.h"
@@ -46,4 +46,20 @@ void	*vector_move_data(t_vector *vector)
 	vector->size = 0;
 	vector->capacity = 0;
 	return (data);
+}
+
+t_vector	*vector_free(t_vector *vector, void (*f)(void *))
+{
+	void	*data;
+	size_t	i;
+
+	data = vector->data;
+	i = 0;
+	while (i < vector->size)
+	{
+		f(data);
+		i++;
+		data += vector->elem_size;
+	}
+	return (vector_clear(vector));
 }
