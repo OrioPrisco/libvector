@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:37:12 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/01 22:28:40 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/21 15:54:03 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	vector_append_elems(t_vector *vector, const void *data, size_t n)
 t_vector	*vector_pop_n(t_vector *vector, size_t index, size_t n)
 {
 	ft_memmove(vector->data + index * vector->elem_size,
-		vector->data + index + n,
+		vector->data + (index + n) * vector->elem_size,
 		(vector->size - index - n) * vector->elem_size);
 	vector->size -= n;
 	return (vector);
