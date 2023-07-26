@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:50 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/18 15:23:37 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/26 18:47:16 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,13 @@ bool			vector_copy(t_vector *des, const t_vector *src);
 //Does not clear the vector, But Initializes it
 bool			vector_copy_n(t_vector *dest, const void *src,
 					size_t n, size_t elem_size);
-// implenting this one requires a fct ptr and genric swap fct
-// t_vector		*vector_sort(t_vector *vector);
+t_vector		*vector_sort(t_vector *vector, int (*f)(void *, void *));
 //returns ptr to src so you can free it if needed
 t_vector		*vector_move(t_vector *dest, t_vector *src);
-// both of these functions require int (*f)(void *, void *) comp functions
-//size_t			vector_count_elems(t_vector *vector, void *data,
-//					size_t index);
-//bool			vector_is_sorted(t_vector *vector, bool ascending);
+size_t			vector_count_elems(t_vector *vector, void *data,
+					size_t index, int (*f)(void *, void *));
+bool			vector_is_sorted(t_vector *vector, bool ascending,
+					int (*f)(void *, void *));
 
 //appends a new element at the end of the vector that is memset to 0
 // but does not increase the size.

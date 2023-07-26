@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:37:12 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/21 15:54:03 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/07/26 16:47:07 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ t_vector	*vector_move(t_vector *dest, t_vector *src)
 	ft_bzero(src, sizeof(*src));
 	return (src);
 }
-/*
-size_t	vector_count_elems(t_vector *vector, t_vector_data data, size_t index)
+
+size_t	vector_count_elems(t_vector *vector, void *data, size_t index,
+	int (*cmp)(void *, void *))
 {
 	size_t	total;
 
 	total = 0;
 	while (index < vector->size)
 	{
-		if (vector->data[index++] == data)
+		if (!cmp(vector->data + index++ *vector->elem_size, data))
 			total++;
 	}
 	return (total);
 }
-*/

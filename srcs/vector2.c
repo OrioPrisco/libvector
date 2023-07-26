@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:25:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/08 21:06:23 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/07/26 16:44:00 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ bool	vector_insert(t_vector *vector, size_t index, const void *data)
 	return (0);
 }
 
-/*
-t_vector	*vector_sort(t_vector *vector)
+t_vector	*vector_sort(t_vector *vector, int (*cmp)(void *, void *))
 {
 	size_t			i;
 	size_t			j;
-	t_vector_data	temp;
 
 	i = 0;
 	while (i < vector->size)
@@ -50,19 +48,18 @@ t_vector	*vector_sort(t_vector *vector)
 		j = i + 1;
 		while (j < vector->size)
 		{
-			if (vector->data[i] > vector->data[j])
-			{
-				temp = *(vector->data + i);
-				*(vector->data + i) = *(vector->data + j);
-				*(vector->data + j) = temp;
-			}
+			if (cmp(vector->data + (i * vector->elem_size),
+					vector->data + (j * vector->elem_size)) > 0)
+				ft_memswp(
+					vector->data + (i * vector->elem_size),
+					vector->data + (j * vector->elem_size),
+					vector->elem_size);
 			j++;
 		}
 		i++;
 	}
 	return (vector);
 }
-*/
 
 bool	vector_copy(t_vector *dest, const t_vector *src)
 {
