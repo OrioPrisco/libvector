@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:50 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/26 18:47:16 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/09/21 12:41:19 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ bool			vector_copy(t_vector *des, const t_vector *src);
 //Does not clear the vector, But Initializes it
 bool			vector_copy_n(t_vector *dest, const void *src,
 					size_t n, size_t elem_size);
-t_vector		*vector_sort(t_vector *vector, int (*f)(void *, void *));
+t_vector		*vector_sort(t_vector *vector, int (*f)(void *, void *),
+					bool ascending);
 //returns ptr to src so you can free it if needed
 t_vector		*vector_move(t_vector *dest, t_vector *src);
 size_t			vector_count_elems(t_vector *vector, void *data,

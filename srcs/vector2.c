@@ -6,7 +6,7 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:25:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/26 16:44:00 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/09/21 13:00:20 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ bool	vector_insert(t_vector *vector, size_t index, const void *data)
 	return (0);
 }
 
-t_vector	*vector_sort(t_vector *vector, int (*cmp)(void *, void *))
+t_vector	*vector_sort(t_vector *vector, int (*cmp)(void *, void *),
+				bool ascending)
 {
 	size_t			i;
 	size_t			j;
+	int				res;
 
 	i = 0;
 	while (i < vector->size)
@@ -48,8 +50,9 @@ t_vector	*vector_sort(t_vector *vector, int (*cmp)(void *, void *))
 		j = i + 1;
 		while (j < vector->size)
 		{
-			if (cmp(vector->data + (i * vector->elem_size),
-					vector->data + (j * vector->elem_size)) > 0)
+			res = cmp(vector->data + i * vector->elem_size,
+					vector->data + j * vector->elem_size);
+			if (res && ((res < 0) ^ ascending))
 				ft_memswp(
 					vector->data + (i * vector->elem_size),
 					vector->data + (j * vector->elem_size),
