@@ -6,12 +6,13 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:25:51 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/09/21 13:00:20 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2023/09/22 15:40:31 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "libft.h"
+#include <stdlib.h>
 
 void	vector_pop(t_vector *vector, size_t index, void *dest)
 {

@@ -6,12 +6,13 @@
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:19 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2023/07/14 17:38:51 by OrioPrisco       ###   ########.fr       */
+/*   Updated: 2023/09/22 15:40:11 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "libft.h"
+#include <stdlib.h>
 
 t_vector	*vector_init(t_vector *vector, size_t elem_size)
 {
